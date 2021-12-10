@@ -1,5 +1,6 @@
 package com.example.myandroiddevelopment.Service;
 
+import com.example.myandroiddevelopment.Models.DiscoverMoviesModel;
 import com.example.myandroiddevelopment.Models.MovieModel;
 import com.example.myandroiddevelopment.Models.RequestTokenModel;
 import com.example.myandroiddevelopment.Models.SessionIDModel;
@@ -18,4 +19,6 @@ public interface TMDBAPI {
     Call<SessionIDModel> PostNewSession(@Query("api_key") String apiKey, @Body RequestTokenModel requestToken);
     @GET("/3/movie/{movieID}")
     Call<MovieModel> GetMovieInfo(@Path("movieID") String movieID, @Query("api_key") String apiKey);
+    @GET("/3/discover/movie")
+    Call<DiscoverMoviesModel> GetAllMoviesInfo(@Query("api_key") String apiKey);
 }
