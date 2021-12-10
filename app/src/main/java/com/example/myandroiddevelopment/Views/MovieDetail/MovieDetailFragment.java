@@ -1,14 +1,27 @@
 package com.example.myandroiddevelopment.Views.MovieDetail;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.myandroiddevelopment.Models.CompanyInfoModel;
+import com.example.myandroiddevelopment.Models.MovieModel;
 import com.example.myandroiddevelopment.R;
+
+import java.io.InputStream;
+import java.util.List;
 
 public class MovieDetailFragment extends Fragment {
     View _v;
@@ -19,6 +32,68 @@ public class MovieDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         _v = inflater.inflate(R.layout.fragment_movie_detail, container, false);
+        InitControllerMutableChange();
+        _controller.FetchMovie(MovieDetailFragmentArgs.fromBundle(getArguments()).getMovieID());
         return _v;
+    }
+
+    private void InitControllerMutableChange()
+    {
+        _controller._movie.observe(getViewLifecycleOwner(), new Observer<MovieModel>() {
+            @Override
+            public void onChanged(MovieModel movieModel) {
+                ImageView poster = _v.findViewById(R.id.img_poster);
+                TextView title = _v.findViewById(R.id.txt_title);
+                TextView desc = _v.findViewById(R.id.txt_desc);
+                TextView companiesName = _v.findViewById(R.id.txt_companies_name);
+                TextView release = _v.findViewById(R.id.txt_release);
+                new DownloadImageTask(poster).execute("https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + movieModel.poster_path);
+                title.setText(movieModel.original_title);
+                desc.setText(movieModel.overview);
+                companiesName.setText(companiesNameListToString(movieModel.production_companies));
+                release.setText("Release date: " + movieModel.release_date);
+            }
+        });
+    }
+
+    private String companiesNameListToString(List<CompanyInfoModel> companiesList)
+    {
+        if (companiesList == null)
+            return "";
+        String res = "Production companies: ";
+        boolean firstElem = true;
+        for (CompanyInfoModel company: companiesList) {
+            if (firstElem)
+                firstElem = false;
+            else
+                res += ", ";
+            res += company.name;
+        }
+        return (firstElem ? "" : res);
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 }
