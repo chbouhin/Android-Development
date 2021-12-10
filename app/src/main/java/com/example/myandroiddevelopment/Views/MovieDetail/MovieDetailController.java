@@ -1,10 +1,8 @@
 package com.example.myandroiddevelopment.Views.MovieDetail;
 
-import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.myandroiddevelopment.Models.DiscoverMoviesModel;
+import com.example.myandroiddevelopment.Models.MovieModel;
 import com.example.myandroiddevelopment.RetrofitProvider;
 import com.example.myandroiddevelopment.Service.TMDBAPI;
 
@@ -13,21 +11,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MovieDetailController {
-
-    MutableLiveData<DiscoverMoviesModel> _requestToken = new MutableLiveData<>();
+    MutableLiveData<MovieModel> _movie = new MutableLiveData<MovieModel>();
     TMDBAPI _service = RetrofitProvider.getRetrofitInstance();
 
-    public void FetchDiscoverMovies()
+    public void FetchMovie(String movieID)
     {
-        Call<DiscoverMoviesModel> call = _service.GetAllMoviesInfo(RetrofitProvider.apiKey);
-        call.enqueue(new Callback<DiscoverMoviesModel>() {
+        Call<MovieModel> call = _service.GetMovieInfo(movieID, RetrofitProvider.apiKey);
+        call.enqueue(new Callback<MovieModel>() {
             @Override
-            public void onResponse(Call<DiscoverMoviesModel> call, Response<DiscoverMoviesModel> response) {
-                _requestToken.setValue(response.body());
+            public void onResponse(Call<MovieModel> call, Response<MovieModel> response) {
+                _movie.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<DiscoverMoviesModel> call, Throwable t) {
+            public void onFailure(Call<MovieModel> call, Throwable t) {
             }
         });
     }
