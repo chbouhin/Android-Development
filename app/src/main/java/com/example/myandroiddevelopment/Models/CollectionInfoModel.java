@@ -2,7 +2,7 @@ package com.example.myandroiddevelopment.Models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CollectionInfo {
+public class CollectionInfoModel {
     @SerializedName("id")
     public Integer id;
     @SerializedName("name")

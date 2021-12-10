@@ -2,7 +2,7 @@ package com.example.myandroiddevelopment.Models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LanguageInfo {
+public class LanguageInfoModel {
     @SerializedName("english_name")
     public String english_name;
     @SerializedName("iso_639_1")

@@ -10,11 +10,11 @@ public class MovieModel {
     @SerializedName("backdrop_path")
     public String backdrop_path;
     @SerializedName("belongs_to_collection")
-    public CollectionInfo belongs_to_collection;
+    public CollectionInfoModel belongs_to_collection;
     @SerializedName("budget")
     public Integer budget;
     @SerializedName("genres")
-    public List<GenreInfo> genres;
+    public List<GenreInfoModel> genres;
     @SerializedName("homepage")
     public String homepage;
     @SerializedName("id")
@@ -32,9 +32,9 @@ public class MovieModel {
     @SerializedName("poster_path")
     public String poster_path;
     @SerializedName("production_companies")
-    public List<CompanyInfo> production_companies;
+    public List<CompanyInfoModel> production_companies;
     @SerializedName("production_countries")
-    public List<CountryInfo> production_countries;
+    public List<CountryInfoModel> production_countries;
     @SerializedName("release_date")
     public String release_date;
     @SerializedName("revenue")
@@ -42,7 +42,7 @@ public class MovieModel {
     @SerializedName("runtime")
     public Integer runtime;
     @SerializedName("spoken_languages")
-    public List<LanguageInfo> spoken_languages;
+    public List<LanguageInfoModel> spoken_languages;
     @SerializedName("status")
     public String status;
     @SerializedName("tagline")

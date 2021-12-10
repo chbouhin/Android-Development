@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/yanna/Documents/prog/Epitech/Android/Android-Development/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/Users/yanna/Documents/prog/Epitech/Android/Android-Development/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/yanna/Documents/prog/Epitech/Android/Android-Development/app/src/main/res/layout/fragment_discover.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/yanna/Documents/prog/Epitech/Android/Android-Development/app/src/main/res/layout/fragment_favorites.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/yanna/Documents/prog/Epitech/Android/Android-Development/app/src/main/res/layout/fragment_login.xml" value="0.37864583333333335" />
+        <entry key="..\:/Users/yanna/Documents/prog/Epitech/Android/Android-Development/app/src/main/res/layout/fragment_movie_detail.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/yanna/Documents/prog/Epitech/Android/Android-Development/app/src/main/res/layout/fragment_search.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/yanna/Documents/prog/Epitech/Android/Android-Development/app/src/main/res/menu/bottom_navigator.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

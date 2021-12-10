@@ -2,6 +2,32 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/login_frag">
+
+    <fragment
+        android:id="@+id/login_frag"
+        android:name="com.example.myandroiddevelopment.Views.Login.LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/go_after_login"
+            app:destination="@id/discover_frag"/>
+    </fragment>
+    <fragment
+        android:id="@+id/discover_frag"
+        android:name="com.example.myandroiddevelopment.Views.Discover.DiscoverFragment"
+        tools:layout="@layout/fragment_discover"></fragment>
+    <fragment
+        android:id="@+id/favorites_frag"
+        android:name="com.example.myandroiddevelopment.Views.Favorites.FavoritesFragment"
+        tools:layout="@layout/fragment_favorites"></fragment>
+    <fragment
+        android:id="@+id/search_frag"
+        android:name="com.example.myandroiddevelopment.Views.Search.SearchFragment"
+        tools:layout="@layout/fragment_search"></fragment>
+    <fragment
+        android:id="@+id/movie_detail_frag"
+        android:name="com.example.myandroiddevelopment.Views.MovieDetail.MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail"></fragment>
 
 </navigation>
