@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,7 +36,35 @@ public class MovieDetailFragment extends Fragment {
         _v = inflater.inflate(R.layout.fragment_movie_detail, container, false);
         InitControllerMutableChange();
         _controller.FetchMovie(MovieDetailFragmentArgs.fromBundle(getArguments()).getMovieID());
+        _controller.FetchAccount();
+        InitBtnFav();
+        InitBtnRate();
         return _v;
+    }
+
+    private void InitBtnFav()
+    {
+        ImageButton btn = _v.findViewById(R.id.btn_addToFav);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _controller.AddToFavorite();
+            }
+        });
+    }
+
+    private void InitBtnRate()
+    {
+        Button btn = _v.findViewById(R.id.btn_rate);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText rateEditText = _v.findViewById(R.id.editTxt_rate);
+                Float rate = Float.parseFloat(rateEditText.getText().toString());
+                if (rate >= 0.5 && rate <= 10)
+                    _controller.Rate(rate);
+            }
+        });
     }
 
     private void InitControllerMutableChange()

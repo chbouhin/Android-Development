@@ -41,4 +41,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"/>
 
+    <EditText
+        android:id="@+id/editTxt_rate"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="280dp"
+        android:text="0.5"/>
+    <TextView
+        android:id="@+id/txt_rateMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/10"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="50dp"/>
+    <Button
+        android:id="@+id/btn_rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate"
+        android:layout_marginTop="280dp"
+        android:layout_marginLeft="80dp"/>
+
 </FrameLayout>
