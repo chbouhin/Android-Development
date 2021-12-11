@@ -16,7 +16,7 @@ public class FavoritesController {
 
     public void FetchFavoriteMovies()
     {
-        Call<DiscoverMoviesModel> call = _service.GetFavoriteMoviesInfo("accountId", RetrofitProvider.apiKey);
+        Call<DiscoverMoviesModel> call = _service.GetFavoriteMoviesInfo(RetrofitProvider.sessionID, RetrofitProvider.apiKey);
         call.enqueue(new Callback<DiscoverMoviesModel>() {
             @Override
             public void onResponse(Call<DiscoverMoviesModel> call, Response<DiscoverMoviesModel> response) {
