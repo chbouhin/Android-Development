@@ -3,12 +3,16 @@ package com.example.myandroiddevelopment.Views.Favorites;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.myandroiddevelopment.Models.DiscoverMoviesModel;
 import com.example.myandroiddevelopment.R;
+import com.example.myandroiddevelopment.Views.MovieDetail.MovieDetailFragmentArgs;
 
 public class FavoritesFragment extends Fragment {
     View _v;
@@ -19,6 +23,19 @@ public class FavoritesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         _v = inflater.inflate(R.layout.fragment_favorites, container, false);
+        InitOnControllerMutableChange();
+        _controller.FetchFavoriteMovies("account_id");// A remplacer
         return _v;
+    }
+
+    private void InitOnControllerMutableChange()
+    {
+        _controller._requestToken.observe(getViewLifecycleOwner(), new Observer<DiscoverMoviesModel>() {
+            @Override
+            public void onChanged(DiscoverMoviesModel discoverMoviesModel) {
+                if (discoverMoviesModel == null)
+                    return;
+            }
+        });
     }
 }

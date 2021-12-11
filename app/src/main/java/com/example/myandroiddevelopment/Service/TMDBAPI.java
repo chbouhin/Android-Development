@@ -21,4 +21,6 @@ public interface TMDBAPI {
     Call<MovieModel> GetMovieInfo(@Path("movieID") String movieID, @Query("api_key") String apiKey);
     @GET("/3/discover/movie")
     Call<DiscoverMoviesModel> GetAllMoviesInfo(@Query("api_key") String apiKey);
+    @GET("/3/account/{account_id}/favorite/movies")
+    Call<DiscoverMoviesModel> GetFavoriteMoviesInfo(@Path("account_id") String movieID, @Query("api_key") String apiKey);
 }
