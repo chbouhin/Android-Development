@@ -11,9 +11,4 @@
         android:layout_height="match_parent"
         android:text="Discover" />
 
-    <TextView
-        android:id="@+id/displayTest"
-        android:layout_marginTop="100dp"
-        android:layout_width="185dp"
-        android:layout_height="120dp" />
 </FrameLayout>

@@ -28,11 +28,13 @@ public interface TMDBAPI {
     @GET("/3/discover/movie")
     Call<DiscoverMoviesModel> GetAllMoviesInfo(@Query("api_key") String apiKey);
     @GET("/3/account/{account_id}/favorite/movies")
-    Call<DiscoverMoviesModel> GetFavoriteMoviesInfo(@Path("account_id") String movieID, @Query("api_key") String apiKey);
+    Call<DiscoverMoviesModel> GetFavoriteMoviesInfo(@Path("accountId") String accountId, @Query("api_key") String apiKey);
     @GET("/3/account")
     Call<AccountModel> GetAccount(@Query("api_key") String apiKey, @Query("session_id") String sessionID);
     @POST("/3/account/{accountID}/favorite")
     Call<StatusModel> PostAddFavorite(@Path("accountID") Integer accountID, @Query("api_key") String apiKey, @Query("session_id") String sessionID, @Body AddFavoriteModel body, @Header("Content-Type") String contentType);
     @POST("/3/movie/{movieID}/rating")
     Call<StatusModel> PostRateMovie(@Path("movieID") Integer accountID, @Query("api_key") String apiKey, @Query("session_id") String sessionID, @Body RateModel value, @Header("Content-Type") String contentType);
+    @GET("/3/search/movie")
+    Call<DiscoverMoviesModel> GetSearchMoviesInfo(@Query("api_key") String apiKey, @Query("query") String query);
 }

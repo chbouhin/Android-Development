@@ -24,7 +24,7 @@ public class FavoritesFragment extends Fragment {
         // Inflate the layout for this fragment
         _v = inflater.inflate(R.layout.fragment_favorites, container, false);
         InitOnControllerMutableChange();
-        _controller.FetchFavoriteMovies("account_id");// A remplacer
+        _controller.FetchFavoriteMovies();
         return _v;
     }
 

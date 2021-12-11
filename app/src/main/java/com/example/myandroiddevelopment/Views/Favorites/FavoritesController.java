@@ -14,9 +14,9 @@ public class FavoritesController {
     MutableLiveData<DiscoverMoviesModel> _requestToken = new MutableLiveData<>();
     TMDBAPI _service = RetrofitProvider.getRetrofitInstance();
 
-    public void FetchFavoriteMovies(String account_id)
+    public void FetchFavoriteMovies()
     {
-        Call<DiscoverMoviesModel> call = _service.GetFavoriteMoviesInfo(account_id, RetrofitProvider.apiKey);
+        Call<DiscoverMoviesModel> call = _service.GetFavoriteMoviesInfo("accountId", RetrofitProvider.apiKey);
         call.enqueue(new Callback<DiscoverMoviesModel>() {
             @Override
             public void onResponse(Call<DiscoverMoviesModel> call, Response<DiscoverMoviesModel> response) {
