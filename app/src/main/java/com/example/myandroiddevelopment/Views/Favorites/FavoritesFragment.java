@@ -30,7 +30,7 @@ public class FavoritesFragment extends Fragment {
 
     private void InitOnControllerMutableChange()
     {
-        _controller._requestToken.observe(getViewLifecycleOwner(), new Observer<DiscoverMoviesModel>() {
+        _controller._result.observe(getViewLifecycleOwner(), new Observer<DiscoverMoviesModel>() {
             @Override
             public void onChanged(DiscoverMoviesModel discoverMoviesModel) {
                 if (discoverMoviesModel == null)
