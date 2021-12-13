@@ -4,7 +4,9 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.myandroiddevelopment.Models.AccountModel;
 import com.example.myandroiddevelopment.Models.DiscoverMoviesModel;
+import com.example.myandroiddevelopment.Models.MovieModel;
 import com.example.myandroiddevelopment.RetrofitProvider;
 import com.example.myandroiddevelopment.Service.TMDBAPI;
 
@@ -18,16 +20,26 @@ public class FavoritesController {
 
     public void FetchFavoriteMovies()
     {
-        Call<DiscoverMoviesModel> call = _service.GetFavoriteMoviesInfo("ACCOUNT ID", RetrofitProvider.apiKey, RetrofitProvider.sessionID);
-        call.enqueue(new Callback<DiscoverMoviesModel>() {
+        Call<AccountModel> call = _service.GetAccount(RetrofitProvider.apiKey, RetrofitProvider.sessionID);
+        call.enqueue(new Callback<AccountModel>() {
             @Override
-            public void onResponse(Call<DiscoverMoviesModel> call, Response<DiscoverMoviesModel> response) {
-                _result.setValue(response.body());
-                Log.d("result", _result.getValue().total_results + "");
+            public void onResponse(Call<AccountModel> call, Response<AccountModel> response) {
+                Call<DiscoverMoviesModel> favCall = _service.GetFavoriteMoviesInfo(response.body().id, RetrofitProvider.apiKey, RetrofitProvider.sessionID);
+                favCall.enqueue(new Callback<DiscoverMoviesModel>() {
+                    @Override
+                    public void onResponse(Call<DiscoverMoviesModel> call, Response<DiscoverMoviesModel> response) {
+                        _result.setValue(response.body());
+                        Log.d("result", _result.getValue().total_results + "");
+                    }
+
+                    @Override
+                    public void onFailure(Call<DiscoverMoviesModel> call, Throwable t) {
+                    }
+                });
             }
 
             @Override
-            public void onFailure(Call<DiscoverMoviesModel> call, Throwable t) {
+            public void onFailure(Call<AccountModel> call, Throwable t) {
             }
         });
     }
