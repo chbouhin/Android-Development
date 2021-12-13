@@ -1,11 +1,9 @@
 package com.example.myandroiddevelopment.Views.Login;
 
-import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.myandroiddevelopment.Models.RequestTokenModel;
-import com.example.myandroiddevelopment.Models.SessionIDModel;
+import com.example.myandroiddevelopment.Models.Login.RequestTokenModel;
+import com.example.myandroiddevelopment.Models.Login.SessionIDModel;
 import com.example.myandroiddevelopment.RetrofitProvider;
 import com.example.myandroiddevelopment.Service.TMDBAPI;
 

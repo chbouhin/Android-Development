@@ -8,11 +8,9 @@ import androidx.lifecycle.Observer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.example.myandroiddevelopment.Models.DiscoverMoviesModel;
+import com.example.myandroiddevelopment.Models.List.DiscoverMoviesModel;
 import com.example.myandroiddevelopment.R;
-import com.example.myandroiddevelopment.Views.MovieDetail.MovieDetailFragmentArgs;
 
 public class FavoritesFragment extends Fragment {
     View _v;

@@ -1,19 +1,18 @@
 package com.example.myandroiddevelopment.Service;
 
-import com.example.myandroiddevelopment.Models.AccountModel;
-import com.example.myandroiddevelopment.Models.AddFavoriteModel;
-import com.example.myandroiddevelopment.Models.DiscoverMoviesModel;
-import com.example.myandroiddevelopment.Models.MovieModel;
-import com.example.myandroiddevelopment.Models.RateModel;
-import com.example.myandroiddevelopment.Models.RequestTokenModel;
-import com.example.myandroiddevelopment.Models.SessionIDModel;
-import com.example.myandroiddevelopment.Models.StatusModel;
+import com.example.myandroiddevelopment.Models.Account.AccountModel;
+import com.example.myandroiddevelopment.Models.Post.AddFavoriteModel;
+import com.example.myandroiddevelopment.Models.List.DiscoverMoviesModel;
+import com.example.myandroiddevelopment.Models.Movie.MovieModel;
+import com.example.myandroiddevelopment.Models.Post.RateModel;
+import com.example.myandroiddevelopment.Models.Login.RequestTokenModel;
+import com.example.myandroiddevelopment.Models.Login.SessionIDModel;
+import com.example.myandroiddevelopment.Models.Post.StatusModel;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;

@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.myandroiddevelopment.Models.RequestTokenModel;
-import com.example.myandroiddevelopment.Models.SessionIDModel;
+import com.example.myandroiddevelopment.Models.Login.RequestTokenModel;
+import com.example.myandroiddevelopment.Models.Login.SessionIDModel;
 import com.example.myandroiddevelopment.R;
 import com.example.myandroiddevelopment.RetrofitProvider;
 

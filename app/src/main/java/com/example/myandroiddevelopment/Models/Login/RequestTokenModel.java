@@ -1,4 +1,4 @@
-package com.example.myandroiddevelopment.Models;
+package com.example.myandroiddevelopment.Models.Login;
 
 import com.google.gson.annotations.SerializedName;
 

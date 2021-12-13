@@ -1,4 +1,4 @@
-package com.example.myandroiddevelopment.Models;
+package com.example.myandroiddevelopment.Models.List;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.List;

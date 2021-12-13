@@ -5,13 +5,12 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
-import com.example.myandroiddevelopment.Models.DiscoverMoviesModel;
+import com.example.myandroiddevelopment.Models.List.DiscoverMoviesModel;
 import com.example.myandroiddevelopment.R;
 
 public class SearchFragment extends Fragment {

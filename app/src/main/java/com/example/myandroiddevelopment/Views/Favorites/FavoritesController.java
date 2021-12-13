@@ -4,9 +4,8 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.myandroiddevelopment.Models.AccountModel;
-import com.example.myandroiddevelopment.Models.DiscoverMoviesModel;
-import com.example.myandroiddevelopment.Models.MovieModel;
+import com.example.myandroiddevelopment.Models.Account.AccountModel;
+import com.example.myandroiddevelopment.Models.List.DiscoverMoviesModel;
 import com.example.myandroiddevelopment.RetrofitProvider;
 import com.example.myandroiddevelopment.Service.TMDBAPI;
 

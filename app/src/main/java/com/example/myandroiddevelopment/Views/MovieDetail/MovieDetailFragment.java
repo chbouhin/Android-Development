@@ -18,8 +18,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.myandroiddevelopment.Models.CompanyInfoModel;
-import com.example.myandroiddevelopment.Models.MovieModel;
+import com.example.myandroiddevelopment.Models.Movie.CompanyInfoModel;
+import com.example.myandroiddevelopment.Models.Movie.MovieModel;
 import com.example.myandroiddevelopment.R;
 
 import java.io.InputStream;

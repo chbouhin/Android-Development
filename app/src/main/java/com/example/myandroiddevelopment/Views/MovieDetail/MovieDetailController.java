@@ -1,15 +1,14 @@
 package com.example.myandroiddevelopment.Views.MovieDetail;
 
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.myandroiddevelopment.Models.AccountModel;
-import com.example.myandroiddevelopment.Models.AddFavoriteModel;
-import com.example.myandroiddevelopment.Models.MovieModel;
-import com.example.myandroiddevelopment.Models.RateModel;
-import com.example.myandroiddevelopment.Models.StatusModel;
+import com.example.myandroiddevelopment.Models.Account.AccountModel;
+import com.example.myandroiddevelopment.Models.Post.AddFavoriteModel;
+import com.example.myandroiddevelopment.Models.Movie.MovieModel;
+import com.example.myandroiddevelopment.Models.Post.RateModel;
+import com.example.myandroiddevelopment.Models.Post.StatusModel;
 import com.example.myandroiddevelopment.RetrofitProvider;
 import com.example.myandroiddevelopment.Service.TMDBAPI;
 
