@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitProvider {
     static TMDBAPI _service = null;
-    public static String apiKey = "e7ef6b8985f39448196af698af149821";
+        public static String apiKey = "e7ef6b8985f39448196af698af149821";
     public static String sessionID = null;
 
     public static void InitRetrofitInstance() {
