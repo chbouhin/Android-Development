@@ -14,7 +14,7 @@ import retrofit2.Response;
 public class LoginController {
     MutableLiveData<RequestTokenModel> _requestToken = new MutableLiveData<RequestTokenModel>();
     MutableLiveData<SessionIDModel> _sessionID = new MutableLiveData<SessionIDModel>();
-    TMDBAPI _service = RetrofitProvider.getRetrofitInstance();
+    TMDBAPI _service = RetrofitProvider.GetRetrofitInstance();
 
     public void FetchRequestToken()
     {

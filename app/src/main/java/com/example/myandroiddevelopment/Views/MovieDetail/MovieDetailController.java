@@ -21,7 +21,7 @@ public class MovieDetailController {
     MutableLiveData<AccountModel> _account = new MutableLiveData<AccountModel>();
     MutableLiveData<StatusModel> _lastStatus = new MutableLiveData<StatusModel>();
     MutableLiveData<Boolean> _isAlreadyFav = new MutableLiveData<Boolean>(false);
-    TMDBAPI _service = RetrofitProvider.getRetrofitInstance();
+    TMDBAPI _service = RetrofitProvider.GetRetrofitInstance();
 
     public void FetchMovie(String movieID)
     {

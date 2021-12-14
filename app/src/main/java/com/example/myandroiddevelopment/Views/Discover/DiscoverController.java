@@ -14,7 +14,7 @@ import retrofit2.Response;
 
 public class DiscoverController {
     MutableLiveData<DiscoverMoviesModel> _result = new MutableLiveData<>();
-    TMDBAPI _service = RetrofitProvider.getRetrofitInstance();
+    TMDBAPI _service = RetrofitProvider.GetRetrofitInstance();
 
     public void FetchDiscoverMovies()
     {
