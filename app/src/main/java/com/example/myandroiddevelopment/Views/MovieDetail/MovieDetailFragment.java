@@ -102,7 +102,7 @@ public class MovieDetailFragment extends Fragment {
         return (firstElem ? "" : res);
     }
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+    public static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
         public DownloadImageTask(ImageView bmImage) {
