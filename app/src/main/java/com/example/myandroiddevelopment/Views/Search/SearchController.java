@@ -1,7 +1,5 @@
 package com.example.myandroiddevelopment.Views.Search;
 
-import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.myandroiddevelopment.Models.List.DiscoverMoviesModel;
@@ -23,7 +21,6 @@ public class SearchController {
             @Override
             public void onResponse(Call<DiscoverMoviesModel> call, Response<DiscoverMoviesModel> response) {
                 _result.setValue(response.body());
-                Log.d("result", _result.getValue().total_results + "");
             }
 
             @Override
