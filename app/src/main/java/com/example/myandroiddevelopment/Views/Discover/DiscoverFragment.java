@@ -63,7 +63,7 @@ public class DiscoverFragment extends Fragment {
 
     private void setMovieInfo(List<ResultsDiscoverMovies> results)
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < results.size(); i++)
         {
             movieInfoList.add(new MovieInfo(results.get(i).title, results.get(i).overview, results.get(i).poster_path));
         }
