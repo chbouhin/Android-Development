@@ -16,23 +16,38 @@
         android:layout_height="50dp"
         android:layout_marginLeft="150dp"
         android:textSize="20dp"/>
-    <TextView
-        android:id="@+id/txt_desc"
+    <ScrollView
+        android:id="@+id/scroll_desc"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="60dp"/>
+        android:layout_marginTop="60dp">
+        <TextView
+            android:id="@+id/txt_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </ScrollView>
 
     <ImageButton
         android:id="@+id/btn_addToFav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-        android:src="@drawable/ic_baseline_star_24" />
+        android:src="@drawable/ic_baseline_star_border_24"
+        android:clickable="false"/>
+    <ImageButton
+        android:id="@+id/btn_addToWatchlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="50dp"
+        android:src="@drawable/ic_baseline_playlist_add_24"
+        android:clickable="false"/>
     <TextView
         android:id="@+id/txt_companies_name"
         android:layout_marginTop="200dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="100dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"/>
     <TextView
@@ -62,6 +77,7 @@
         android:layout_height="wrap_content"
         android:text="Rate"
         android:layout_marginTop="280dp"
-        android:layout_marginLeft="80dp"/>
+        android:layout_marginLeft="80dp"
+        android:clickable="false"/>
 
 </FrameLayout>

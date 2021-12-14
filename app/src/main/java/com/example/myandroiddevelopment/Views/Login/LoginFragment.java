@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,9 +58,11 @@ public class LoginFragment extends Fragment {
                 if (sessionIDModel == null)
                     return;
                 RetrofitProvider.sessionID = sessionIDModel.session_id;
+                Log.d("SESSION ID", sessionIDModel.session_id);
                 TextView txt = _v.findViewById(R.id.displaySessionID);
                 txt.setText(RetrofitProvider.sessionID);
                 NavDirections action = LoginFragmentDirections.goAfterLogin();
+                //NavDirections action = LoginFragmentDirections.goTestMovieInfo("2728");
                 //NavDirections action = LoginFragmentDirections.goTestMovieInfo("597316");
                 Navigation.findNavController(_v).navigate(action);
             }

@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myandroiddevelopment.Models.Account.MovieAccountStatesModel;
 import com.example.myandroiddevelopment.Models.Movie.CompanyInfoModel;
 import com.example.myandroiddevelopment.Models.Movie.MovieModel;
 import com.example.myandroiddevelopment.R;
@@ -35,9 +36,12 @@ public class MovieDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         _v = inflater.inflate(R.layout.fragment_movie_detail, container, false);
         InitControllerMutableChange();
-        _controller.FetchMovie(MovieDetailFragmentArgs.fromBundle(getArguments()).getMovieID());
+        String movieID = MovieDetailFragmentArgs.fromBundle(getArguments()).getMovieID();
+        _controller.FetchMovie(movieID);
+        _controller.FetchMovieAccountStates(movieID);
         _controller.FetchAccount();
         InitBtnFav();
+        InitBtnWatch();
         InitBtnRate();
         return _v;
     }
@@ -49,6 +53,17 @@ public class MovieDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 _controller.AddToFavorite();
+            }
+        });
+    }
+
+    private void InitBtnWatch()
+    {
+        ImageButton btn = _v.findViewById(R.id.btn_addToWatchlist);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                _controller.AddToWatchlist();
             }
         });
     }
@@ -82,6 +97,25 @@ public class MovieDetailFragment extends Fragment {
                 desc.setText(movieModel.overview);
                 companiesName.setText(companiesNameListToString(movieModel.production_companies));
                 release.setText("Release date: " + movieModel.release_date);
+            }
+        });
+        _controller._movieAccountStates.observe(getViewLifecycleOwner(), new Observer<MovieAccountStatesModel>() {
+            @Override
+            public void onChanged(MovieAccountStatesModel masm) {
+                Log.d("ON MASM CHANGE", "id: " + masm.id);
+                Log.d("ON MASM CHANGE", "favorite: " + masm.favorite);
+                Log.d("ON MASM CHANGE", "rated: " + masm.rated.value);
+                Log.d("ON MASM CHANGE", "watchlist: " + masm.watchlist);
+                ImageButton addToFav = _v.findViewById(R.id.btn_addToFav);
+                ImageButton addToWatchlist = _v.findViewById(R.id.btn_addToWatchlist);
+                EditText rate = _v.findViewById(R.id.editTxt_rate);
+                Button rate_btn = _v.findViewById(R.id.btn_rate);
+                addToFav.setImageResource(masm.favorite ? R.drawable.ic_baseline_star_24 : R.drawable.ic_baseline_star_border_24);
+                addToFav.setClickable(true);
+                addToWatchlist.setImageResource(masm.watchlist ? R.drawable.ic_baseline_playlist_add_check_24 : R.drawable.ic_baseline_playlist_add_24);
+                addToWatchlist.setClickable(true);
+                rate.setText((masm.rated.value < 0.5) ? "0.5" : ((masm.rated.value > 10) ? "10" : masm.rated.value.toString()));
+                rate_btn.setClickable(true);
             }
         });
     }

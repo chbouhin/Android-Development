@@ -9,10 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitProvider {
     static TMDBAPI _service = null;
-    public static String apiKey = "e7ef6b8985f39448196af698af149821";
+        public static String apiKey = "e7ef6b8985f39448196af698af149821";
     public static String sessionID = null;
 
-    public static TMDBAPI getRetrofitInstance() {
+    public static void InitRetrofitInstance() {
         if (_service == null) {
             Gson gson = new GsonBuilder()
                     .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
@@ -23,6 +23,10 @@ public class RetrofitProvider {
                     .build();
             _service = retrofit.create(TMDBAPI.class);
         }
+    }
+
+    public static TMDBAPI GetRetrofitInstance() {
+        InitRetrofitInstance();
         return (_service);
     }
 }
