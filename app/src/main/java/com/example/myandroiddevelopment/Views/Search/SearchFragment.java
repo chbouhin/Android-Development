@@ -36,6 +36,7 @@ public class SearchFragment extends Fragment {
         recyclerView = _v.findViewById(R.id.recyclerViewMovie);
         movieInfoList = new ArrayList<>();
         InitOnControllerMutableChange();
+        SetAdapter();
         InitSearchView();
         return _v;
     }
@@ -47,8 +48,8 @@ public class SearchFragment extends Fragment {
             public void onChanged(DiscoverMoviesModel discoverMoviesModel) {
                 if (discoverMoviesModel == null)
                     return;
-                setMovieInfo(discoverMoviesModel.results);
-                setAdapter();
+                SetMovieInfo(discoverMoviesModel.results);
+                SetAdapter();
             }
         });
     }
@@ -70,7 +71,7 @@ public class SearchFragment extends Fragment {
         });
     }
 
-    private void setAdapter()
+    private void SetAdapter()
     {
         MovieListAdapter movieListAdapter = new MovieListAdapter(movieInfoList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -79,7 +80,7 @@ public class SearchFragment extends Fragment {
         recyclerView.setAdapter(movieListAdapter);
     }
 
-    private void setMovieInfo(List<ResultsDiscoverMovies> results)
+    private void SetMovieInfo(List<ResultsDiscoverMovies> results)
     {
         for (int i = 0; i < results.size(); i++)
         {

@@ -32,10 +32,11 @@ public class DiscoverFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         _v = inflater.inflate(R.layout.fragment_discover, container, false);
-        _controller.FetchDiscoverMovies();
         recyclerView = _v.findViewById(R.id.recyclerViewMovie);
         movieInfoList = new ArrayList<>();
         InitOnControllerMutableChange();
+        SetAdapter();
+        _controller.FetchDiscoverMovies();
         return _v;
     }
 
@@ -46,13 +47,13 @@ public class DiscoverFragment extends Fragment {
             public void onChanged(DiscoverMoviesModel discoverMoviesModel) {
                 if (discoverMoviesModel == null)
                     return;
-                setMovieInfo(discoverMoviesModel.results);
-                setAdapter();
+                SetMovieInfo(discoverMoviesModel.results);
+                SetAdapter();
             }
         });
     }
 
-    private void setAdapter()
+    private void SetAdapter()
     {
         MovieListAdapter movieListAdapter = new MovieListAdapter(movieInfoList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -61,7 +62,7 @@ public class DiscoverFragment extends Fragment {
         recyclerView.setAdapter(movieListAdapter);
     }
 
-    private void setMovieInfo(List<ResultsDiscoverMovies> results)
+    private void SetMovieInfo(List<ResultsDiscoverMovies> results)
     {
         for (int i = 0; i < results.size(); i++)
         {
