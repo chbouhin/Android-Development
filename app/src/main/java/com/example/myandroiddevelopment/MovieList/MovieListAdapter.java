@@ -59,7 +59,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieListAdapter.RecyclerHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull MovieListAdapter.RecyclerHolder holder, int position) {
         String title = moveInfoList.get(position).getTitle();
         String description = moveInfoList.get(position).getDescription();
         String image = moveInfoList.get(position).getImage();
@@ -73,13 +73,13 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
                 NavDirections action = null;
                 switch(scene) {
                     case DISCOVER:
-                        action = DiscoverFragmentDirections.discoverToMovieInfo(moveInfoList.get(position).getId() + "");
+                        action = DiscoverFragmentDirections.discoverToMovieInfo(moveInfoList.get(holder.getAdapterPosition()).getId() + "");
                         break;
                     case FAVORITES:
-                        action = FavoritesFragmentDirections.favoritesToMovieInfo(moveInfoList.get(position).getId() + "");
+                        action = FavoritesFragmentDirections.favoritesToMovieInfo(moveInfoList.get(holder.getAdapterPosition()).getId() + "");
                         break;
                     case SEARCH:
-                        action = SearchFragmentDirections.searchToMovieInfo(moveInfoList.get(position).getId() + "");
+                        action = SearchFragmentDirections.searchToMovieInfo(moveInfoList.get(holder.getAdapterPosition()).getId() + "");
                     default:
                         break;
                 }
