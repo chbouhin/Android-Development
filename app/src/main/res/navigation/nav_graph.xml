@@ -19,15 +19,27 @@
     <fragment
         android:id="@+id/discover_frag"
         android:name="com.example.myandroiddevelopment.Views.Discover.DiscoverFragment"
-        tools:layout="@layout/fragment_discover"></fragment>
+        tools:layout="@layout/fragment_discover">
+        <action
+            android:id="@+id/discover_to_movie_info"
+            app:destination="@+id/movie_detail_frag"/>
+    </fragment>
     <fragment
         android:id="@+id/favorites_frag"
         android:name="com.example.myandroiddevelopment.Views.Favorites.FavoritesFragment"
-        tools:layout="@layout/fragment_favorites"></fragment>
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/favorites_to_movie_info"
+            app:destination="@+id/movie_detail_frag"/>
+    </fragment>
     <fragment
         android:id="@+id/search_frag"
         android:name="com.example.myandroiddevelopment.Views.Search.SearchFragment"
-        tools:layout="@layout/fragment_search"></fragment>
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/search_to_movie_info"
+            app:destination="@+id/movie_detail_frag"/>
+    </fragment>
     <fragment
         android:id="@+id/movie_detail_frag"
         android:name="com.example.myandroiddevelopment.Views.MovieDetail.MovieDetailFragment"

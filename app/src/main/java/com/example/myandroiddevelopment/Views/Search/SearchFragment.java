@@ -17,6 +17,7 @@ import com.example.myandroiddevelopment.Models.List.DiscoverMoviesModel;
 import com.example.myandroiddevelopment.Models.List.ResultsDiscoverMovies;
 import com.example.myandroiddevelopment.MovieList.MovieInfo;
 import com.example.myandroiddevelopment.MovieList.MovieListAdapter;
+import com.example.myandroiddevelopment.MovieList.Scene;
 import com.example.myandroiddevelopment.R;
 
 import java.util.ArrayList;
@@ -73,7 +74,7 @@ public class SearchFragment extends Fragment {
 
     private void SetAdapter()
     {
-        MovieListAdapter movieListAdapter = new MovieListAdapter(movieInfoList);
+        MovieListAdapter movieListAdapter = new MovieListAdapter(movieInfoList, Scene.SEARCH);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -84,7 +85,7 @@ public class SearchFragment extends Fragment {
     {
         for (int i = 0; i < results.size(); i++)
         {
-            movieInfoList.add(new MovieInfo(results.get(i).title, results.get(i).overview, results.get(i).poster_path));
+            movieInfoList.add(new MovieInfo(results.get(i).title, results.get(i).overview, results.get(i).poster_path, results.get(i).id));
         }
     }
 }

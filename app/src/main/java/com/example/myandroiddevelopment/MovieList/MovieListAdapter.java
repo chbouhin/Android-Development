@@ -1,32 +1,45 @@
 package com.example.myandroiddevelopment.MovieList;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myandroiddevelopment.R;
+import com.example.myandroiddevelopment.Views.Discover.DiscoverFragment;
+import com.example.myandroiddevelopment.Views.Discover.DiscoverFragmentDirections;
+import com.example.myandroiddevelopment.Views.Favorites.FavoritesFragmentDirections;
+import com.example.myandroiddevelopment.Views.Login.LoginFragmentDirections;
 import com.example.myandroiddevelopment.Views.MovieDetail.MovieDetailFragment;
+import com.example.myandroiddevelopment.Views.Search.SearchFragmentDirections;
 
 import java.util.ArrayList;
 
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.RecyclerHolder> {
     private ArrayList<MovieInfo> moveInfoList;
+    private Scene scene;
 
-    public MovieListAdapter(ArrayList<MovieInfo> moveInfoList)
+    public MovieListAdapter(ArrayList<MovieInfo> moveInfoList, Scene scene)
     {
         this.moveInfoList = moveInfoList;
+        this.scene = scene;
     }
 
     public class RecyclerHolder extends RecyclerView.ViewHolder {
         private TextView title;
         private TextView description;
         private ImageView image;
+        private Button button;
 
         public RecyclerHolder(final View view)
         {
@@ -34,6 +47,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
             title = view.findViewById(R.id.titleMovie);
             description = view.findViewById(R.id.descriptionMovie);
             image = view.findViewById(R.id.imageMovie);
+            button = view.findViewById(R.id.buttonMovie);
         }
     }
 
@@ -45,7 +59,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MovieListAdapter.RecyclerHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MovieListAdapter.RecyclerHolder holder, @SuppressLint("RecyclerView") int position) {
         String title = moveInfoList.get(position).getTitle();
         String description = moveInfoList.get(position).getDescription();
         String image = moveInfoList.get(position).getImage();
@@ -53,6 +67,25 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
         holder.title.setText(title);
         holder.description.setText(description);
         new MovieDetailFragment.DownloadImageTask(holder.image).execute("https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + image);
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavDirections action = null;
+                switch(scene) {
+                    case DISCOVER:
+                        action = DiscoverFragmentDirections.discoverToMovieInfo(moveInfoList.get(position).getId() + "");
+                        break;
+                    case FAVORITES:
+                        action = FavoritesFragmentDirections.favoritesToMovieInfo(moveInfoList.get(position).getId() + "");
+                        break;
+                    case SEARCH:
+                        action = SearchFragmentDirections.searchToMovieInfo(moveInfoList.get(position).getId() + "");
+                    default:
+                        break;
+                }
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
     }
 
     @Override
@@ -60,3 +93,4 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
         return moveInfoList.size();
     }
 }
+
