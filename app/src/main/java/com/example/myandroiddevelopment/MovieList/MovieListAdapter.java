@@ -27,12 +27,12 @@ import com.example.myandroiddevelopment.Views.Watchlist.WatchlistFragmentDirecti
 import java.util.ArrayList;
 
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.RecyclerHolder> {
-    private ArrayList<MovieInfo> moveInfoList;
+    private ArrayList<MovieInfo> movieInfoList;
     private Scene scene;
 
-    public MovieListAdapter(ArrayList<MovieInfo> moveInfoList, Scene scene)
+    public MovieListAdapter(ArrayList<MovieInfo> movieInfoList, Scene scene)
     {
-        this.moveInfoList = moveInfoList;
+        this.movieInfoList = movieInfoList;
         this.scene = scene;
     }
 
@@ -61,9 +61,9 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
 
     @Override
     public void onBindViewHolder(@NonNull MovieListAdapter.RecyclerHolder holder, int position) {
-        String title = moveInfoList.get(position).getTitle();
-        String description = moveInfoList.get(position).getDescription();
-        String image = moveInfoList.get(position).getImage();
+        String title = movieInfoList.get(position).getTitle();
+        String description = movieInfoList.get(position).getDescription();
+        String image = movieInfoList.get(position).getImage();
 
         holder.title.setText(title);
         holder.description.setText(description);
@@ -74,16 +74,16 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
                 NavDirections action = null;
                 switch(scene) {
                     case DISCOVER:
-                        action = DiscoverFragmentDirections.discoverToMovieInfo(moveInfoList.get(holder.getAdapterPosition()).getId() + "");
+                        action = DiscoverFragmentDirections.discoverToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId() + "");
                         break;
                     case FAVORITES:
-                        action = FavoritesFragmentDirections.favoritesToMovieInfo(moveInfoList.get(holder.getAdapterPosition()).getId() + "");
+                        action = FavoritesFragmentDirections.favoritesToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId() + "");
                         break;
                     case SEARCH:
-                        action = SearchFragmentDirections.searchToMovieInfo(moveInfoList.get(holder.getAdapterPosition()).getId() + "");
+                        action = SearchFragmentDirections.searchToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId() + "");
                         break;
                     case WATCHLIST:
-                        action = WatchlistFragmentDirections.watchlistToMovieInfo(moveInfoList.get(holder.getAdapterPosition()).getId() + "");
+                        action = WatchlistFragmentDirections.watchlistToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId() + "");
                         break;
                     default:
                         break;
@@ -95,7 +95,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
 
     @Override
     public int getItemCount() {
-        return moveInfoList.size();
+        return movieInfoList.size();
     }
 }
 
