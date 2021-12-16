@@ -22,6 +22,7 @@ import com.example.myandroiddevelopment.Views.Favorites.FavoritesFragmentDirecti
 import com.example.myandroiddevelopment.Views.Login.LoginFragmentDirections;
 import com.example.myandroiddevelopment.Views.MovieDetail.MovieDetailFragment;
 import com.example.myandroiddevelopment.Views.Search.SearchFragmentDirections;
+import com.example.myandroiddevelopment.Views.Watchlist.WatchlistFragmentDirections;
 
 import java.util.ArrayList;
 
@@ -80,6 +81,10 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
                         break;
                     case SEARCH:
                         action = SearchFragmentDirections.searchToMovieInfo(moveInfoList.get(holder.getAdapterPosition()).getId() + "");
+                        break;
+                    case WATCHLIST:
+                        action = WatchlistFragmentDirections.watchlistToMovieInfo(moveInfoList.get(holder.getAdapterPosition()).getId() + "");
+                        break;
                     default:
                         break;
                 }

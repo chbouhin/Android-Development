@@ -35,6 +35,8 @@ public interface TMDBAPI {
     Call<DiscoverMoviesModel> GetAllMoviesInfo(@Query("api_key") String apiKey);
     @GET("/3/account/{accountId}/favorite/movies")
     Call<DiscoverMoviesModel> GetFavoriteMoviesInfo(@Path("accountId") Integer accountId, @Query("api_key") String apiKey, @Query("session_id") String sessionID);
+    @GET("/3/account/{accountId}/watchlist/movies")
+    Call<DiscoverMoviesModel> GetWatchlistMoviesInfo(@Path("accountId") Integer accountId, @Query("api_key") String apiKey, @Query("session_id") String sessionID);
     @GET("/3/account")
     Call<AccountModel> GetAccount(@Query("api_key") String apiKey, @Query("session_id") String sessionID);
     @POST("/3/account/{accountID}/favorite")
