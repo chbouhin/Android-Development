@@ -33,6 +33,14 @@
             app:destination="@+id/movie_detail_frag"/>
     </fragment>
     <fragment
+        android:id="@+id/watchlist_frag"
+        android:name="com.example.myandroiddevelopment.Views.Watchlist.WatchlistFragment"
+        tools:layout="@layout/fragment_watchlist">
+        <action
+            android:id="@+id/watchlist_to_movie_info"
+            app:destination="@+id/movie_detail_frag"/>
+    </fragment>
+    <fragment
         android:id="@+id/search_frag"
         android:name="com.example.myandroiddevelopment.Views.Search.SearchFragment"
         tools:layout="@layout/fragment_search">
