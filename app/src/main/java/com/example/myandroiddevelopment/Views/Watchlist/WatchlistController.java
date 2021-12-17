@@ -14,14 +14,15 @@ import retrofit2.Response;
 public class WatchlistController {
     MutableLiveData<DiscoverMoviesModel> _result = new MutableLiveData<>();
     TMDBAPI _service = RetrofitProvider.GetRetrofitInstance();
+    Integer actualPage = 1;
 
-    public void FetchWatchlistMovies()
+    public void FetchWatchlistMovies(Integer page)
     {
         Call<AccountModel> call = _service.GetAccount(RetrofitProvider.apiKey, RetrofitProvider.sessionID);
         call.enqueue(new Callback<AccountModel>() {
             @Override
             public void onResponse(Call<AccountModel> call, Response<AccountModel> response) {
-                Call<DiscoverMoviesModel> watchCall = _service.GetWatchlistMoviesInfo(response.body().id, RetrofitProvider.apiKey, RetrofitProvider.sessionID);
+                Call<DiscoverMoviesModel> watchCall = _service.GetWatchlistMoviesInfo(response.body().id, RetrofitProvider.apiKey, RetrofitProvider.sessionID, page + "");
                 watchCall.enqueue(new Callback<DiscoverMoviesModel>() {
                     @Override
                     public void onResponse(Call<DiscoverMoviesModel> call, Response<DiscoverMoviesModel> response) {
@@ -38,5 +39,18 @@ public class WatchlistController {
             public void onFailure(Call<AccountModel> call, Throwable t) {
             }
         });
+    }
+
+    public void FetchWatchlistMovies()
+    {
+        FetchWatchlistMovies(1);
+    }
+
+    public void FetchNextPage(Integer totalPages)
+    {
+        if (actualPage < totalPages) {
+            actualPage += 1;
+            FetchWatchlistMovies(actualPage);
+        }
     }
 }

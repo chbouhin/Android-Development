@@ -13,10 +13,11 @@ import retrofit2.Response;
 public class DiscoverController {
     MutableLiveData<DiscoverMoviesModel> _result = new MutableLiveData<>();
     TMDBAPI _service = RetrofitProvider.GetRetrofitInstance();
+    Integer actualPage = 1;
 
-    public void FetchDiscoverMovies()
+    public void FetchDiscoverMovies(Integer page)
     {
-        Call<DiscoverMoviesModel> call = _service.GetAllMoviesInfo(RetrofitProvider.apiKey);
+        Call<DiscoverMoviesModel> call = _service.GetAllMoviesInfo(RetrofitProvider.apiKey, page + "");
         call.enqueue(new Callback<DiscoverMoviesModel>() {
             @Override
             public void onResponse(Call<DiscoverMoviesModel> call, Response<DiscoverMoviesModel> response) {
@@ -27,5 +28,18 @@ public class DiscoverController {
             public void onFailure(Call<DiscoverMoviesModel> call, Throwable t) {
             }
         });
+    }
+
+    public void FetchDiscoverMovies()
+    {
+        FetchDiscoverMovies(1);
+    }
+
+    public void FetchNextPage(Integer totalPages)
+    {
+        if (actualPage < totalPages) {
+            actualPage += 1;
+            FetchDiscoverMovies(actualPage);
+        }
     }
 }

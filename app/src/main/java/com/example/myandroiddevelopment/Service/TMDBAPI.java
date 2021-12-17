@@ -32,11 +32,11 @@ public interface TMDBAPI {
     @GET("/3/movie/{movieID}/account_states")
     Call<MovieAccountStatesWithRatedBoolModel> GetMovieAccountStatesWithRatedBool(@Path("movieID") String movieID, @Query("api_key") String apiKey, @Query("session_id") String sessionID);
     @GET("/3/discover/movie")
-    Call<DiscoverMoviesModel> GetAllMoviesInfo(@Query("api_key") String apiKey);
+    Call<DiscoverMoviesModel> GetAllMoviesInfo(@Query("api_key") String apiKey, @Query("page") String page);
     @GET("/3/account/{accountId}/favorite/movies")
-    Call<DiscoverMoviesModel> GetFavoriteMoviesInfo(@Path("accountId") Integer accountId, @Query("api_key") String apiKey, @Query("session_id") String sessionID);
+    Call<DiscoverMoviesModel> GetFavoriteMoviesInfo(@Path("accountId") Integer accountId, @Query("api_key") String apiKey, @Query("session_id") String sessionID, @Query("page") String page);
     @GET("/3/account/{accountId}/watchlist/movies")
-    Call<DiscoverMoviesModel> GetWatchlistMoviesInfo(@Path("accountId") Integer accountId, @Query("api_key") String apiKey, @Query("session_id") String sessionID);
+    Call<DiscoverMoviesModel> GetWatchlistMoviesInfo(@Path("accountId") Integer accountId, @Query("api_key") String apiKey, @Query("session_id") String sessionID, @Query("page") String page);
     @GET("/3/account")
     Call<AccountModel> GetAccount(@Query("api_key") String apiKey, @Query("session_id") String sessionID);
     @POST("/3/account/{accountID}/favorite")
@@ -46,5 +46,5 @@ public interface TMDBAPI {
     @POST("/3/movie/{movieID}/rating")
     Call<StatusModel> PostRateMovie(@Path("movieID") Integer accountID, @Query("api_key") String apiKey, @Query("session_id") String sessionID, @Body RateModel value, @Header("Content-Type") String contentType);
     @GET("/3/search/movie")
-    Call<DiscoverMoviesModel> GetSearchMoviesInfo(@Query("api_key") String apiKey, @Query("query") String query);
+    Call<DiscoverMoviesModel> GetSearchMoviesInfo(@Query("api_key") String apiKey, @Query("query") String query, @Query("page") String page);
 }

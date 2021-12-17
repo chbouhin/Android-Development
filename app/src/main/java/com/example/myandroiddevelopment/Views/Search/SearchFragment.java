@@ -28,6 +28,9 @@ public class SearchFragment extends Fragment {
     SearchController _controller = new SearchController();
     ArrayList<MovieInfo> movieInfoList;
     RecyclerView recyclerView;
+    Integer totalPages = 1;
+    Boolean canScroll = true;
+    String querySave = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,8 +52,10 @@ public class SearchFragment extends Fragment {
             public void onChanged(DiscoverMoviesModel discoverMoviesModel) {
                 if (discoverMoviesModel == null)
                     return;
+                canScroll = true;
+                totalPages = discoverMoviesModel.total_pages;
                 SetMovieInfo(discoverMoviesModel.results);
-                SetAdapter();
+                recyclerView.getAdapter().notifyDataSetChanged();
             }
         });
     }
@@ -61,6 +66,9 @@ public class SearchFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                movieInfoList.clear();
+                searchView.clearFocus();
+                querySave = query;
                 _controller.FetchSearchMovies(query);
                 return false;
             }
@@ -84,8 +92,17 @@ public class SearchFragment extends Fragment {
     private void SetMovieInfo(List<ResultsDiscoverMovies> results)
     {
         for (int i = 0; i < results.size(); i++)
-        {
             movieInfoList.add(new MovieInfo(results.get(i).title, results.get(i).overview, results.get(i).poster_path, results.get(i).id));
-        }
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE && canScroll) {
+                    _controller.FetchNextPage(querySave, totalPages);
+                    canScroll = false;
+                }
+            }
+        });
     }
 }
