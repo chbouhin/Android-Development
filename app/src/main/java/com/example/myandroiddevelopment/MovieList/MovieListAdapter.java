@@ -74,16 +74,16 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Recy
                 NavDirections action = null;
                 switch(scene) {
                     case DISCOVER:
-                        action = DiscoverFragmentDirections.discoverToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId() + "");
+                        action = DiscoverFragmentDirections.discoverToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId());
                         break;
                     case FAVORITES:
-                        action = FavoritesFragmentDirections.favoritesToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId() + "");
+                        action = FavoritesFragmentDirections.favoritesToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId());
                         break;
                     case SEARCH:
-                        action = SearchFragmentDirections.searchToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId() + "");
+                        action = SearchFragmentDirections.searchToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId());
                         break;
                     case WATCHLIST:
-                        action = WatchlistFragmentDirections.watchlistToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId() + "");
+                        action = WatchlistFragmentDirections.watchlistToMovieInfo(movieInfoList.get(holder.getAdapterPosition()).getId());
                         break;
                     default:
                         break;

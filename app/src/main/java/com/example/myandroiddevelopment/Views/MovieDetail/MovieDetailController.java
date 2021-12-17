@@ -26,7 +26,7 @@ public class MovieDetailController {
     MutableLiveData<MovieAccountStatesModel> _movieAccountStates = new MutableLiveData<MovieAccountStatesModel>();
     TMDBAPI _service = RetrofitProvider.GetRetrofitInstance();
 
-    public void FetchMovie(String movieID)
+    public void FetchMovie(Integer movieID)
     {
         Call<MovieModel> call = _service.GetMovieInfo(movieID, RetrofitProvider.apiKey);
         call.enqueue(new Callback<MovieModel>() {
@@ -56,7 +56,7 @@ public class MovieDetailController {
         });
     }
 
-    public void FetchMovieAccountStates(String movieID)
+    public void FetchMovieAccountStates(Integer movieID)
     {
         Call<MovieAccountStatesModel> call = _service.GetMovieAccountStates(movieID, RetrofitProvider.apiKey, RetrofitProvider.sessionID);
         call.enqueue(new Callback<MovieAccountStatesModel>() {

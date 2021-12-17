@@ -26,11 +26,11 @@ public interface TMDBAPI {
     @POST("/3/authentication/session/new")
     Call<SessionIDModel> PostNewSession(@Query("api_key") String apiKey, @Body RequestTokenModel requestToken);
     @GET("/3/movie/{movieID}")
-    Call<MovieModel> GetMovieInfo(@Path("movieID") String movieID, @Query("api_key") String apiKey);
+    Call<MovieModel> GetMovieInfo(@Path("movieID") Integer movieID, @Query("api_key") String apiKey);
     @GET("/3/movie/{movieID}/account_states")
-    Call<MovieAccountStatesModel> GetMovieAccountStates(@Path("movieID") String movieID, @Query("api_key") String apiKey, @Query("session_id") String sessionID);
+    Call<MovieAccountStatesModel> GetMovieAccountStates(@Path("movieID") Integer movieID, @Query("api_key") String apiKey, @Query("session_id") String sessionID);
     @GET("/3/movie/{movieID}/account_states")
-    Call<MovieAccountStatesWithRatedBoolModel> GetMovieAccountStatesWithRatedBool(@Path("movieID") String movieID, @Query("api_key") String apiKey, @Query("session_id") String sessionID);
+    Call<MovieAccountStatesWithRatedBoolModel> GetMovieAccountStatesWithRatedBool(@Path("movieID") Integer movieID, @Query("api_key") String apiKey, @Query("session_id") String sessionID);
     @GET("/3/discover/movie")
     Call<DiscoverMoviesModel> GetAllMoviesInfo(@Query("api_key") String apiKey, @Query("page") String page);
     @GET("/3/account/{accountId}/favorite/movies")
@@ -44,7 +44,7 @@ public interface TMDBAPI {
     @POST("/3/account/{accountID}/watchlist")
     Call<StatusModel> PostAddWatchlist(@Path("accountID") Integer accountID, @Query("api_key") String apiKey, @Query("session_id") String sessionID, @Body AddWatchlistModel body, @Header("Content-Type") String contentType);
     @POST("/3/movie/{movieID}/rating")
-    Call<StatusModel> PostRateMovie(@Path("movieID") Integer accountID, @Query("api_key") String apiKey, @Query("session_id") String sessionID, @Body RateModel value, @Header("Content-Type") String contentType);
+    Call<StatusModel> PostRateMovie(@Path("movieID") Integer movieID, @Query("api_key") String apiKey, @Query("session_id") String sessionID, @Body RateModel value, @Header("Content-Type") String contentType);
     @GET("/3/search/movie")
     Call<DiscoverMoviesModel> GetSearchMoviesInfo(@Query("api_key") String apiKey, @Query("query") String query, @Query("page") String page);
 }

@@ -36,7 +36,7 @@ public class MovieDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         _v = inflater.inflate(R.layout.fragment_movie_detail, container, false);
         InitControllerMutableChange();
-        String movieID = MovieDetailFragmentArgs.fromBundle(getArguments()).getMovieID();
+        Integer movieID = MovieDetailFragmentArgs.fromBundle(getArguments()).getMovieID();
         _controller.FetchMovie(movieID);
         _controller.FetchMovieAccountStates(movieID);
         _controller.FetchAccount();

@@ -62,8 +62,6 @@ public class LoginFragment extends Fragment {
                 TextView txt = _v.findViewById(R.id.displaySessionID);
                 txt.setText(RetrofitProvider.sessionID);
                 NavDirections action = LoginFragmentDirections.goAfterLogin();
-                //NavDirections action = LoginFragmentDirections.goTestMovieInfo("2728");
-                //NavDirections action = LoginFragmentDirections.goTestMovieInfo("597316");
                 Navigation.findNavController(_v).navigate(action);
             }
         });

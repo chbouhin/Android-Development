@@ -12,9 +12,6 @@
         <action
             android:id="@+id/go_after_login"
             app:destination="@id/discover_frag"/>
-        <action
-            android:id="@+id/go_test_movie_info"
-            app:destination="@+id/movie_detail_frag"/>
     </fragment>
     <fragment
         android:id="@+id/discover_frag"
@@ -54,7 +51,7 @@
         tools:layout="@layout/fragment_movie_detail">
         <argument
             android:name="movieID"
-            app:argType="string"/>
+            app:argType="integer"/>
     </fragment>
 
 </navigation>
