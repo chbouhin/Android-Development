@@ -93,7 +93,7 @@ public class MovieDetailFragment extends Fragment {
                 TextView companiesName = _v.findViewById(R.id.txt_companies_name);
                 TextView release = _v.findViewById(R.id.txt_release);
                 new DownloadImageTask(poster).execute("https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + movieModel.poster_path);
-                title.setText(movieModel.original_title);
+                title.setText(movieModel.title);
                 desc.setText(movieModel.overview);
                 companiesName.setText(companiesNameListToString(movieModel.production_companies));
                 release.setText("Release date: " + movieModel.release_date);

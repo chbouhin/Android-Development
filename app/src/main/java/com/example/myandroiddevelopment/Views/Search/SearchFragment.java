@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 
 import com.example.myandroiddevelopment.Models.List.DiscoverMoviesModel;
-import com.example.myandroiddevelopment.Models.List.ResultsDiscoverMovies;
+import com.example.myandroiddevelopment.Models.Movie.MovieModel;
 import com.example.myandroiddevelopment.MovieList.MovieInfo;
 import com.example.myandroiddevelopment.MovieList.MovieListAdapter;
 import com.example.myandroiddevelopment.MovieList.Scene;
@@ -89,7 +89,7 @@ public class SearchFragment extends Fragment {
         recyclerView.setAdapter(movieListAdapter);
     }
 
-    private void SetMovieInfo(List<ResultsDiscoverMovies> results)
+    private void SetMovieInfo(List<MovieModel> results)
     {
         for (int i = 0; i < results.size(); i++)
             movieInfoList.add(new MovieInfo(results.get(i).title, results.get(i).overview, results.get(i).poster_path, results.get(i).id));
